@@ -3,7 +3,7 @@ import _ from 'lodash';
 import es from 'elasticsearch';
 
 const client = new es.Client({
-  host: 'localhost:9200',
+  host: 'http://localhost:9200',
   log: 'trace',
 });
 
