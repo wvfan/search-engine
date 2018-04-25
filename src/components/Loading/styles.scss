@@ -43,19 +43,24 @@
   position: relative;
   border-radius: 1000px;
   overflow: hidden;
-  animation: outer $speed * $loops linear infinite;
 
-  > .circle {
-    width: 100px;
-    height: 100px;
-    transform-origin: 0 0;
+  > .outlet {
+    width: 100%;
+    height: 100%;
+    animation: outer $speed * $loops linear infinite;
 
-    > .path {
-      transform-origin: center center;
-      stroke-dasharray: 1, 200;
-      stroke-dashoffset: 0;
-      animation: inner $speed linear infinite, arc $speed $easing infinite;
-      stroke-linecap: round;
+    > .circle {
+      width: 100px;
+      height: 100px;
+      transform-origin: 0 0;
+
+      > .path {
+        transform-origin: center center;
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        animation: inner $speed linear infinite, arc $speed $easing infinite;
+        stroke-linecap: square;
+      }
     }
   }
 }

@@ -30,6 +30,7 @@
     "dateformat": "^3.0.2",
     "echarts": "^3.7.2",
     "ejs": "^2.5.7",
+    "elasticsearch": "^14.2.2",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",

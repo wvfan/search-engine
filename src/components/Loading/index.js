@@ -14,6 +14,7 @@ export default class Loading extends React.PureComponent {
     class: PropTypes.string,
     className: PropTypes.string,
     size: PropTypes.number,
+    width: PropTypes.number,
     color: PropTypes.string,
     style: PropTypes.object,
   };
@@ -26,10 +27,10 @@ export default class Loading extends React.PureComponent {
     const {
       className,
       size = 25,
+      width = 0.3,
       color = stylesVariables.primary,
       style = {},
     } = this.props;
-    const width = 16;
     return (
       <View
         className={`loading ${className || ''} ${styles}`}
@@ -39,23 +40,25 @@ export default class Loading extends React.PureComponent {
           ...style,
         }}
       >
-        <svg
-          className="circle"
-          style={{
-            color,
-            transform: `scale(${size / 100})`,
-          }}
-        >
-          <circle
-            className="path"
-            cx={50}
-            cy={50}
-            r={50 - width / 2}
-            fill="none"
-            stroke={color}
-            strokeWidth={width}
-          />
-        </svg>
+        <View className="outlet">
+          <svg
+            className="circle"
+            style={{
+              color,
+              transform: `scale(${size / 100})`,
+            }}
+          >
+            <circle
+              className="path"
+              cx={50}
+              cy={50}
+              r={50 - width * 50 / 2}
+              fill="none"
+              stroke={color}
+              strokeWidth={width * 50}
+            />
+          </svg>
+        </View>
       </View>
     );
   }

@@ -6,7 +6,78 @@
     overflow: hidden;
 
     > .image {
-      background-size: cover;
+      position: absolute;
+      width: 400px;
+      left: calc(50vw - 200px);
+      top: calc(50vh - 250px);
+
+      > img {
+        width: 100%;
+      }
+
+      > .circle {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        left: calc(50% - 38px);
+        top: calc(50% - 45px);
+        border-radius: 1000px;
+        background: radial-gradient($primary, transparentize(white, 1) 70%);
+        transition:
+          opacity 0.2s,
+          transform 0.2s ease-out;
+      }
+      > .circle-hide {
+        opacity: 0;
+        transform: scale(0.2);
+      }
+
+      > .loading {
+        position: absolute;
+        left: calc(50% - 38px);
+        top: calc(50% - 45px);
+        transition:
+          opacity 0.2s,
+          transform 0.2s ease-out;
+      }
+      > .loading-hide {
+        opacity: 0;
+        transform: scale(0.2);
+      }
+    }
+
+    > .input {
+      position: absolute;
+      width: 100%;
+      top: calc(50vh - 40px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > input {
+        width: 80%;
+        max-width: 650px;
+        padding: 11px 22px;
+        margin-left: 30px;
+        font-size: 20px;
+        line-height: 30px;
+        border: none;
+        outline: none;
+        box-shadow: 0 1px 4px $light-gray;
+      }
+    }
+
+    > .result {
+      position: absolute;
+      width: 100%;
+      top: calc(50vh + 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 22px;
+    }
+    > .result-hide {
+      display: none;
     }
   }
 }

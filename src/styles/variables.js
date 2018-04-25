@@ -1,6 +1,6 @@
 
 const ret = {
-  primary: '#039be5',
+  primary: '#61c4e3',
   secondary: '#F39D1C',
   almostBlack: '#14171E',
   lesserBlack: '#21262C',
