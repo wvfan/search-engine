@@ -1,0 +1,61 @@
+@import '~styles/variables.scss';
+
+:local(.styles) {
+  $speed: 1150ms;
+  $loops: 5;
+  $arc: 0.72;
+  $perimeter: 260px;
+  $easing: cubic-bezier(.8,.0,.4,.8);
+
+  @keyframes outer {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes inner {
+    0% {
+      transform: rotate(-360deg * (1 - $arc));
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+
+  @keyframes arc {
+    0% {
+      stroke-dasharray: 1 $perimeter;
+      stroke-dashoffset: 0;
+    }
+    40% {
+      stroke-dasharray: $arc * $perimeter, $perimeter;
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dasharray: 1 $perimeter;
+      stroke-dashoffset: -$arc * $perimeter;
+    }
+  }
+
+  position: relative;
+  border-radius: 1000px;
+  overflow: hidden;
+  animation: outer $speed * $loops linear infinite;
+
+  > .circle {
+    width: 100px;
+    height: 100px;
+    transform-origin: 0 0;
+
+    > .path {
+      transform-origin: center center;
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: inner $speed linear infinite, arc $speed $easing infinite;
+      stroke-linecap: round;
+    }
+  }
+}

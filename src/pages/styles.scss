@@ -1,0 +1,12 @@
+@import '~styles/variables.scss';
+
+:local(.styles) {
+
+  > .body {
+    overflow: hidden;
+
+    > .image {
+      background-size: cover;
+    }
+  }
+}

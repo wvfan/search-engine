@@ -1,0 +1,215 @@
+@import '~styles/variables.scss';
+
+:local(.styles) {
+  position: relative;
+  margin-top: 30px;
+  height: 28px;
+  border-bottom: solid 1px $white-gray;
+
+  > .icon {
+    position: absolute;
+    color: $light-gray;
+    font-family: iconfont;
+    font-size: 18px;
+    pointer-events: none;
+    transition: color 0.3s;
+  }
+
+  > .placeholder {
+    position: absolute;
+    left: 27px;
+    color: $light-gray;
+    font-size: 18px;
+    transform-origin: 0 0;
+    pointer-events: none;
+    transition:
+      color 0.3s,
+      transform 0.3s,
+      opacity 0.3s;
+  }
+  > .placeholder-hide {
+    color: white;
+    transform:
+      translateY(-20px)
+      scale(0.75);
+  }
+
+  > .input {
+    position: absolute;
+    left: 25px;
+    width: calc(100% - 55px);
+    top: 0px;
+    padding: 2px 4px;
+    font-size: 20px;
+    border: none;
+    background-color: transparentize(red, 1);
+    transition: background-color 0.3s;
+  }
+  > .input-highlight {
+    background-color: transparentize(red, 0.5);
+    transition: background-color 0.5s;
+  }
+  > .input-lowlight {
+    background-color: transparentize(red, 0.8);
+    transition: background-color 0.4s ease-in;
+  }
+
+  > .status {
+    position: absolute;
+    top: -3px;
+    right: 26px;
+    pointer-events: none;
+
+    > .loading {
+      position: absolute;
+      top: 3px;
+      left: -1px;
+      transition: opacity 0.3s;
+    }
+
+    > .success {
+      position: absolute;
+      font-family: iconfont;
+      font-size: 23px;
+      color: $primary;
+      transition: opacity 0.3s;
+    }
+
+    > .error {
+      position: absolute;
+      font-family: iconfont;
+      font-size: 23px;
+      color: red;
+      transition: opacity 0.3s;
+    }
+
+    > .hide {
+      opacity: 0;
+    }
+  }
+
+  > .error {
+    position: absolute;
+    right: 3px;
+    top: -20px;
+    color: red;
+    font-size: 15px;
+    cursor: default;
+    transition: opacity 0.3s;
+
+    > .extra {
+      display: inline-block;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  > .error-hide {
+    opacity: 0;
+  }
+
+  > .hint {
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    color: $light-gray;
+    font-size: 16px;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  > .hint-hide {
+    opacity: 0;
+  }
+
+  > .line {
+    position: absolute;
+    bottom: -1px;
+    height: 1.7px;
+    background-color: white;
+  }
+
+  &-will-focus {
+
+    > .icon {
+      color: $primary;
+    }
+
+    > .placeholder {
+      transform:
+        translateY(-20px)
+        scale(0.75);
+    }
+
+    > .line {
+      width: 0;
+      background-color: white;
+      transition:
+        width 0.3s ease-out,
+        background-color 0.3s;
+    }
+  }
+  &-focus {
+
+    > .icon {
+      color: $primary;
+    }
+
+    > .placeholder {
+      transform:
+        translateY(-20px)
+        scale(0.75);
+    }
+
+    > .line {
+      width: 100%;
+      background-color: $primary;
+      transition:
+        width 0.3s ease-out,
+        background-color 0.3s;
+    }
+  }
+  &-did-focused {
+
+    > .icon {
+      color: $primary;
+    }
+
+    > .placeholder {
+      transform:
+        translateY(-20px)
+        scale(0.75);
+    }
+
+    > .line {
+      width: 100%;
+      background-color: $primary;
+      transition:
+        width 0.3s ease-out,
+        background-color 0.3s;
+    }
+  }
+  &-will-blur {
+
+    > .line {
+      width: 100%;
+      opacity: 1;
+      background-color: $primary;
+      transition: opacity 0.3s;
+    }
+  }
+  &-blur {
+
+    > .line {
+      width: 100%;
+      opacity: 0;
+      background-color: $primary;
+      transition: opacity 0.3s;
+    }
+  }
+  &-did-blured {
+
+    > .line {
+      width: 0;
+      opacity: 1;
+    }
+  }
+}

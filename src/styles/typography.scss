@@ -1,0 +1,42 @@
+/* Typography */
+@import "./variables";
+
+body {
+  font-family: sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: $content-color;
+
+  .font-logo {
+    font-family: radikal, sans-serif;
+    font-weight: normal;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+p {
+  font-size: 16px;
+}
+
+.iconfont {
+  font-family: 'iconfont';
+  font-size: 1.3em;
+  padding-top: 0.2em;
+  vertical-align: middle;
+}
+
+@font-face {
+  font-family: sohostd;
+  src: url("fonts/sohostd/sohostdlight.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

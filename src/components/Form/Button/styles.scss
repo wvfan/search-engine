@@ -1,0 +1,61 @@
+@import '~styles/variables.scss';
+
+:local(.styles) {
+  position: relative;
+  background-color: $primary;
+  overflow: hidden;
+  display: flex;
+
+  > .cover {
+    position: absolute;
+    transition: background-color 0.3s;
+  }
+
+  > .left {
+    position: relative;
+  }
+
+  > .right {
+    position: relative;
+  }
+
+  .icon {
+    position: relative;
+    font-family: iconfont;
+    transition: opacity 0.3s;
+  }
+
+  .loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: opacity 0.3s;
+  }
+
+  .hide {
+    opacity: 0;
+  }
+
+  > .context {
+    position: relative;
+    flex: 1;
+  }
+
+  .loading-background {
+    background-color: $primary;
+    transition: background-color 0.3s;
+  }
+
+  &:hover {
+
+    > .cover {
+      background-color: transparentize(black, 0.8);
+    }
+  }
+  &:active {
+
+    > .cover {
+      background-color: transparentize(black, 0.7);
+    }
+  }
+}

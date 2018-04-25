@@ -1,0 +1,35 @@
+@import '~styles/variables.scss';
+
+:local(.styles) {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  > .box {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    > .cover {
+      transition: background-color 0.2s;
+    }
+    > .cover:hover {
+      background-color: transparentize(black, 0.95);
+    }
+    > .cover:active {
+      background-color: transparentize(black, 0.9);
+    }
+
+    > .tick {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: iconfont;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    > .tick-hide {
+      opacity: 0;
+    }
+  }
+}

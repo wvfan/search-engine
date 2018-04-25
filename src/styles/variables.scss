@@ -1,0 +1,136 @@
+@import url(https://fonts.googleapis.com/css?family=Nixie+One);
+@import url(https://fonts.googleapis.com/css?family=Amatica+SC);
+$primary: #039be5;
+$secondary: #F39D1C;
+$primary-text: #000;
+$secondary-text: #95989A;
+$success: #20AF74;
+$error: #E82C4B;
+$warning: #F2DEDE;
+
+$almost-black: #14171E;
+$lesser-black: #21262C;
+$light-gray: #95989A;
+$lesser-gray: #DDDDDD;
+$blue: #28B3B0;
+$light-blue: #03ADFC;
+$facebook-blue: #3B5998;
+
+$orange: #FFAF4E;
+$yellow: #FFD800;
+$cyan: #01B492;
+$mid-cyan: #04756f;
+$another-cyan: #00B5AC;
+$bright-cyan: #01D3AB;
+$dark-cyan: #024E4A;
+$first-text: #747383;
+$dark: #303E3D;
+$faint-gray: #E7E7E7;
+
+$main-gray: #757575;
+$white-gray: #EEEEEE;
+$bg-gray: #C9C9C9;
+
+$medium-gray: #646464;
+$middark-gray: #575757;
+$dark-gray: #2F2F2F;
+$black-gray: #151515;
+$content-color: #373737;
+$info-color: #b4b4b4;
+$border-color: rgba(0, 0, 0, .08);
+$border: 1px solid $border-color;
+$background-color: #eeeeee;
+$bg-color-deg2: #fbfbfb;
+$bg-color-deg3: #f4f4f4;
+$bg-color-deg4: #ddd;
+$background-gradient: linear-gradient(0deg, #EEF1F4 0%, #F1EDF2 100%);
+$main-text: Helvetica Neue, Helvetica, Sans-serif;
+$title-text: 'Nixie One', cursive;
+$serif-text: Courier New, serif;
+
+$max-width-pc: 600px;
+
+$ease-out: cubic-bezier(0.2,0.7,0.5,1);
+
+$app-input-bottom: -200px;
+$client-header-height: 0;
+$client-footer-height: 61px;
+$client-header-shadow: 0 3px 15px 3px $lesser-gray;
+$client-footer-shadow: 0 1px 12px $lesser-gray;
+$cart-icon-space: 107px;
+
+@font-face {
+  font-family: 'iconfont';  /* project id 611986 */
+  src: url('https://at.alicdn.com/t/font_611986_e2rivg8cik2lc8fr.eot');
+  src: url('https://at.alicdn.com/t/font_611986_e2rivg8cik2lc8fr.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_611986_e2rivg8cik2lc8fr.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_611986_e2rivg8cik2lc8fr.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_611986_e2rivg8cik2lc8fr.svg#iconfont') format('svg');
+}
+
+/* GRID */
+
+$grid-desktop-columns: 12 !default;
+$grid-desktop-gutter: 16px !default;
+$grid-desktop-margin: 16px !default;
+$grid-desktop-breakpoint: 840px !default;
+$grid-tablet-columns: 8 !default;
+$grid-tablet-gutter: $grid-desktop-gutter !default;
+$grid-tablet-margin: $grid-desktop-margin !default;
+$grid-tablet-breakpoint: 480px !default;
+$grid-phone-columns: 4 !default;
+$grid-phone-gutter: $grid-desktop-gutter !default;
+$grid-phone-margin: $grid-desktop-margin !default;
+$grid-cell-default-columns: $grid-phone-columns !default;
+$grid-max-columns: $grid-desktop-columns !default;
+
+// Phone
+//
+//  @media ($phone) {
+//    code-here
+//  }
+//
+$phone: "max-width: #{$grid-tablet-breakpoint - 1}";
+// Tablet
+//
+//  @media ($tablet) {
+//    code-here
+//  }
+//
+$tablet: "min-width: #{$grid-tablet-breakpoint}) and (max-width: #{$grid-desktop-breakpoint - 1}";
+// Desktop
+//
+//  @media ($desktop) {
+//    code-here
+//  }
+$desktop: "min-width: #{$grid-desktop-breakpoint}";
+// Phone
+//
+//  @media (#{$large-desktop}) {
+//   code-here
+//  }
+$large-desktop: "min-width: 1200px";
+
+/* MerchantCard */
+
+$merchant-card-img-default-height:180px;
+
+/* BORDER */
+
+$border-color:#dfdcda;
+$border-width:1px;
+
+/* MerchantCategoryNav */
+
+$merchant-category-nav-height: 320px;
+$merchant-category-nav-img-defualt-height: 256px;
+
+/* Teaser */
+
+$location-search-input-height: 46px;
+
+/* HotCard */
+
+$hot-card-height: 430px;
+$hot-card-width: 300px;
+$hot-card-margin: 10px

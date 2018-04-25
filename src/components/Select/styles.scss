@@ -1,0 +1,36 @@
+@import '~styles/variables.scss';
+
+:local(.styles) {
+  position: relative;
+
+  .option {
+    padding: 3px 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .option:hover {
+    background-color: $white-gray;
+  }
+
+  .option-content {
+    white-space: nowrap;
+  }
+
+  > .options {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 0 2px $light-gray;
+    transition: opacity 0.2s;
+
+    > .option {
+      padding: 3px 8px;
+    }
+    > .option:hover {
+      background-color: gray;
+    }
+  }
+  > .options-hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "Index": true,
+  "client": {
+    "detect": true,
+    "report": true,
+  },
+}

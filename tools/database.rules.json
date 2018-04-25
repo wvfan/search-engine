@@ -1,0 +1,243 @@
+{
+  "rules": {
+    ".read": "root.child('users/' + auth.uid + '/role').val() === 'master'",
+    ".write": "root.child('users/' + auth.uid + '/role').val() === 'master'",
+    "minVersion": {
+      ".read": true,
+      ".write": false
+    },
+    "campaignRules": {
+      ".read": true,
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'staff'"
+    },
+    "campaigns": {
+      ".read": true,
+      ".write": false
+    },
+    "campaignsC": {
+      ".read": true,
+      ".write": false
+    },
+    "campaignsP": {
+      ".read": true,
+      ".write": false
+    },
+    "fbTokens": {
+      ".read": true,
+      ".write": false
+    },
+    "coupons": {
+      ".read": true,
+      ".write": false
+    },
+    "dishs": {
+      ".read": true,
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'staff'"
+    },
+    "extraOpts": {
+      ".read": true,
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'staff'"
+    },
+    "extraReqs": {
+      ".read": true,
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'staff'"
+    },
+    "locations": {
+      ".read": true,
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'staff'"
+    },
+    "merchants": {
+      ".read": true,
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'staff'"
+    },
+    "merchantsList": {
+      ".read": true,
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'staff'"
+    },
+    "moments": {
+      ".read": true,
+      ".write": false
+    },
+    "timelines": {
+      ".read": true,
+      ".write": false
+    },
+    "populars": {
+      ".read": true,
+      ".write": false
+    },
+    "texpics": {
+      "$texpicId": {
+        "objectId": {
+          ".read": true,
+          ".write": false
+        },
+        "createdAt": {
+          ".read": true,
+          ".write": false
+        },
+        "user": {
+          ".read": "auth.uid === data.val() || data.parent().child('wAnony').val() === false",
+          ".write": false
+        },
+        "wAnony": {
+          ".read": true,
+          ".write": false
+        },
+        "wRemoved": {
+          ".read": true,
+          ".write": false
+        },
+        "post": {
+          ".read": true,
+          ".write": false
+        },
+        "trans": {
+          ".read": true,
+          ".write": false
+        },
+        "text": {
+          ".read": true,
+          ".write": false
+        },
+        "images": {
+          ".read": true,
+          ".write": false
+        },
+        "imageStyle": {
+          ".read": true,
+          ".write": false
+        },
+        "like": {
+          ".read": true,
+          ".write": false
+        },
+        "comment": {
+          ".read": true,
+          ".write": false
+        }
+      }
+    },
+    "posts": {
+      "$postId": {
+        "objectId": {
+          ".read": true,
+          ".write": false
+        },
+        "createdAt": {
+          ".read": true,
+          ".write": false
+        },
+        "wRemoved": {
+          ".read": true,
+          ".write": false
+        },
+        "topic": {
+          ".read": true,
+          ".write": false
+        },
+        "image": {
+          ".read": true,
+          ".write": false
+        },
+        "campaign": {
+          ".read": true,
+          ".write": false
+        },
+        "reply": {
+          ".read": true,
+          ".write": false
+        }
+      }
+    },
+    "momentsList": {
+      ".read": true,
+      ".write": false
+    },
+    "comments": {
+      ".read": true,
+      ".write": false
+    },
+    "regions": {
+      ".read": true,
+      ".write": false
+    },
+    "stripeSources": {
+      "$sourceId": {
+        "user": {
+          ".read": false,
+          ".write": false
+        },
+        "status": {
+          ".read": "auth.uid === root.child('stripeSources/' + $sourceId + '/user').val()",
+          ".write": false
+        }
+      }
+    },
+    "transNum": {
+      ".read": true,
+      ".write": false
+    },
+    "transs": {
+      ".read": true,
+      ".write": false
+    },
+    "transs_temp": {
+      ".read": true,
+      ".write": false
+    },
+    "users": {
+      "$userId": {
+        ".read": "auth.uid === $userId || root.child('users/' + auth.uid + '/role').val() === 'staff'",
+        "role": {
+          ".read": true,
+          ".write": "auth.admin === $userId"
+        },
+        "userId": {
+          ".read": true,
+          ".write": false
+        },
+        "facebookId": {
+          ".read": true,
+          ".write": true
+        },
+        "lang": {
+          ".read": true,
+          ".write": true
+        },
+        "username": {
+          ".read": true,
+          ".write": true
+        },
+        "avatar": {
+          ".read": true,
+          ".write": true
+        },
+        "public": {
+          ".read": true,
+          ".write": "auth.uid === $userId"
+        },
+        "private": {
+          ".read": "auth.uid === $userId",
+          ".write": "auth.uid === $userId"
+        },
+        "system": {
+          ".read": "auth.uid === $userId",
+          ".write": false,
+          "invitation": {
+            ".read": "auth.uid === $userId",
+            ".write": "auth.uid === $userId"
+          },
+          "facebookId": {
+            ".read": "auth.uid === $userId",
+            ".write": "auth.uid === $userId"
+          },
+          "notifTokens": {
+            ".read": "auth.uid === $userId",
+            ".write": "auth.uid === $userId"
+          }
+        }
+      }
+    }
+  }
+}

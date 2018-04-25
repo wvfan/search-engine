@@ -1,0 +1,122 @@
+@import '~styles/variables';
+
+:local(.styles) {
+  background-color: $white-gray;
+
+  > .body {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    background-color: white;
+
+    > .selectors {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 3px 5px;
+      background-color: white;
+
+      > .selector {
+        position: relative;
+        padding: 2px 6px;
+        margin: 8px 5px;
+        box-shadow: 0 0 0 1.5px white;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+
+        > .box {
+          width: 15px;
+          height: 15px;
+          margin-right: 8px;
+          box-shadow: 0 0 2px $light-gray;
+        }
+        > .box-isolator {
+          background-color: white;
+        }
+        > .box-bad {
+          background-color: red;
+        }
+
+        > .name {
+          font-size: 16px;
+          pointer-events: none;
+        }
+      }
+      > .selector-on {
+        box-shadow: 0 0 0 1.5px #00C0FF;
+      }
+    }
+
+    > .header {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+
+      > .info {
+        margin-right: 20px;
+      }
+
+      > .button {
+        padding: 5px 15px;
+        border-radius: 5px;
+        color: white;
+        background-color: #00C0FF;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      > .button:hover {
+        background-color: darken(#00C0FF, 3);
+      }
+      > .button:active {
+        background-color: darken(#00C0FF, 6);
+      }
+    }
+
+    > .images {
+      width: 100%;
+
+      > .image {
+        position: relative;
+        width: 100%;
+        margin: 0 0 15px;
+
+        > .img {
+          width: 100%;
+        }
+        > .img-faded {
+          opacity: 0.2;
+        }
+
+        > .cover {
+          background-color: transparentize(white, 0.3);
+
+          > .loading {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            left: calc(50% - 40px);
+            top: calc(50% - 40px);
+          }
+        }
+
+        > .box {
+          position: absolute;
+          transition: opacity 0.2s;
+        }
+        > .box-isolator {
+          box-shadow: 0 0 0 2px white;
+        }
+        > .box-bad {
+          box-shadow: 0 0 0 2px red;
+        }
+        > .box-hide {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
