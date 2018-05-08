@@ -34,6 +34,7 @@ export default class Body extends React.PureComponent {
     return (
       <View
         ref={(ref) => {
+          this.ref = ref && ref.ref;
           if (!ref || !ref.ref) return;
           this.context.systemActions.update({
             scrollTop: ref.ref.scrollTop,

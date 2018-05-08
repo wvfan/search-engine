@@ -173,8 +173,8 @@
     "cordova:android:build": "node tools/build.js --android && cordova build android",
     "cordova:ios": "node tools/build.js --ios && cordova run ios",
     "cordova:ios:build": "node tools/build.js --ios && cordova build ios",
-    "deploy": "babel cloud/*.js cloud/*/*.js -d cloud_build && node tools/build.js --release && heroku git:remote -a plutus-music && git add . && git commit -am \"make it better\" && git push heroku master",
-    "deploy:backend": "babel cloud/*.js cloud/*/*.js -d cloud_build && heroku git:remote -a plutus-music && git add . && git commit -am \"make it better\" && git push heroku master"
+    "deploy": "node tools/build.js --release && heroku git:remote -a search-engine-wvfan && git add . && git commit -am \"make it better\" && git push heroku master",
+    "deploy:backend": "babel cloud/*.js cloud/*/*.js -d cloud_build && heroku git:remote -a search-engine-wvfan && git add . && git commit -am \"make it better\" && git push heroku master"
   },
   "main": "index.js"
 }

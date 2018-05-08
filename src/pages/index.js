@@ -13,6 +13,7 @@ import * as actions from './actions';
 
 import { styles } from './styles.scss';
 import logo from './images/logo.svg';
+import bgImage from './images/home.jpg';
 
 @page({
   path: '/',
@@ -21,10 +22,15 @@ import logo from './images/logo.svg';
     queryString: '',
     wSearching: false,
     results: {},
+    chats: [],
   },
+  serialize: obj => ({
+    ..._.omit(obj, ['chats', 'results']),
+  }),
   deserialize: obj => ({
     ...obj,
-    results: {},
+    results: [],
+    chats: [],
   }),
 })
 @observer
@@ -34,13 +40,16 @@ export default class Root extends React.Component {
     history: PropTypes.object,
     queryString: PropTypes.string,
     wSearching: PropTypes.bool,
-    results: PropTypes.object,
+    results: PropTypes.array,
+    chats: PropTypes.array,
     update: PropTypes.func,
     search: PropTypes.func,
+    addDialog: PropTypes.func,
   };
 
   constructor(props, context) {
     super(props, context);
+    this.resultIndex = 0;
     this.search = ::this.search;
   }
 
@@ -48,15 +57,43 @@ export default class Root extends React.Component {
     const {
       queryString,
     } = this.props;
-    this.props.update({
-      wSearching: true,
+
+    this.props.addDialog({
+      user: 'self',
+      text: queryString,
     });
-    const res = await this.props.search({
+    setTimeout(() => {
+      this.bodyRef.scrollTop = this.mainRef.offsetHeight;
+    }, 50);
+    if (['change', 'another'].indexOf(queryString) !== -1) {
+      this.resultIndex += 1;
+      if (this.resultIndex >= this.props.results.length) {
+        this.props.addDialog({
+          user: 'bot',
+          text: 'Sorry no more answer',
+        });
+      } else {
+        this.props.addDialog({
+          user: 'bot',
+          text: this.props.results[this.resultIndex]._source.answer,
+        });
+      }
+      setTimeout(() => {
+        this.bodyRef.scrollTop = this.mainRef.offsetHeight;
+      }, 50);
+      return;
+    }
+    await this.props.search({
       queryString,
     });
-    this.props.update({
-      wSearching: false,
+    this.resultIndex = 0;
+    this.props.addDialog({
+      user: 'bot',
+      text: this.props.results[0] && this.props.results[0]._source.answer || 'Sorry I don\'t know.',
     });
+    setTimeout(() => {
+      this.bodyRef.scrollTop = this.mainRef.offsetHeight;
+    }, 50);
   }
 
   render() {
@@ -64,24 +101,61 @@ export default class Root extends React.Component {
       queryString,
       wSearching,
       results,
+      chats,
     } = this.props;
 
     return (
-      <Page styles={styles}>
-        <Body>
-          <div className="image">
-            <img src={logo} />
-            <div className={`circle ${wSearching ? 'circle-hide' : ''}`} />
-            <Loading
-              className={wSearching ? '' : 'loading-hide'}
-              size={80}
-            />
+      <Page
+        styles={styles}
+        style={{
+          backgroundImage: `url('${bgImage}')`,
+        }}
+      >
+        <div className="cover absolute-parent" />
+        <Body
+          ref={(ref) => {
+            this.bodyRef = ref && ref.ref;
+          }}
+        >
+          <div
+            ref={(ref) => {
+              this.mainRef = ref;
+            }}
+            className="main"
+          >
+            <div className="fill-space" />
+            {_.map(chats, (chat, index) => (
+              <div
+                key={index}
+                className="chat"
+              >
+                {chat.user === 'self' ?
+                  <div className="fill-space" />
+                  : ''
+                }
+                {chat.user === 'bot' ?
+                  <div className="avatar">
+                    <img src={logo} />
+                  </div>
+                  : ''
+                }
+                <div className={`text text-${chat.user}`}>
+                  {chat.text}
+                </div>
+                {chat.user === 'bot' ?
+                  <div className="fill-space" />
+                  : ''
+                }
+              </div>
+            ))}
           </div>
+        </Body>
+        <div className="footer">
           <div className="input">
             <input
               type="text"
               value={queryString}
-              placeholder="Type a search query here"
+              placeholder="Type your question here..."
               onChange={(evt) => {
                 this.props.update({
                   queryString: evt.target.value,
@@ -92,16 +166,13 @@ export default class Root extends React.Component {
               }}
             />
             <Button
-              size={24}
-              context="Search"
+              size={20}
+              context="Ask"
               right="&#xe60a;"
               onClick={this.search}
             />
           </div>
-          <div className={`result ${results.total === undefined ? 'result-hide' : ''}`}>
-            {results.total} result{results.total <= 1 ? ' is' : 's are'}  found
-          </div>
-        </Body>
+        </div>
       </Page>
     );
   }

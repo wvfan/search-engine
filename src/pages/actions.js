@@ -2,26 +2,28 @@ import _ from 'lodash';
 
 import es from 'elasticsearch';
 
-const client = new es.Client({
-  host: 'http://localhost:9200',
-  log: 'trace',
-});
-
 export function search(params) {
   return async ({ state }) => {
     const {
       queryString,
     } = params;
-    const res = await client.search({
-      index: 'stackoverflow',
-      body: {
-        query: {
-          match: {
-            question: queryString,
-          },
-        },
-      },
-    });
+    let res = await fetch(`http://localhost:8080/QA_bot/query/${queryString}`);
+    res = await res.json();
+    console.log(res);
     state.results = res.hits;
+  };
+}
+
+export function addDialog(params) {
+  return ({ state }) => {
+    const {
+      user,
+      text,
+    } = params;
+    state.chats.push({
+      user,
+      text,
+    });
+    state.queryString = '';
   };
 }
