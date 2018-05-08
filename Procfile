@@ -1,1 +1,1 @@
-web: node --debug=5858 index.js
+web: node --harmony --debug=5858 index.js
